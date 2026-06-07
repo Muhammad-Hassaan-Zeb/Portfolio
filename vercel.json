@@ -1,7 +1,5 @@
 {
-  "buildCommand": "echo 'Static site - no build needed'",
   "outputDirectory": ".",
-  "framework": "static",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ],
