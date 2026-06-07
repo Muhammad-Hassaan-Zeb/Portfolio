@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Hassaan Zeb — IT Systems Engineer & AI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary:    #111315;
+  --bg-secondary:  #1A1D21;
+  --bg-card:       #22262B;
+  --border:        #30363D;
+  --text-primary:  #F5F7FA;
+  --text-secondary:#AAB2BF;
+  --text-muted:    #6E7681;
+  --green:         #39FF88;
+  --purple:        #A855F7;
+  --success:       #22C55E;
+  --warning:       #F59E0B;
+  --error:         #EF4444;
+  --font-display:  'Syne', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+  --radius:        12px;
+  --radius-lg:     20px;
+  --transition:    0.25s cubic-bezier(0.4,0,0.2,1);
+  --glow-green:    0 0 20px rgba(57,255,136,0.3);
+  --glow-purple:   0 0 20px rgba(168,85,247,0.3);
+}
+[data-theme="light"] {
+  --bg-primary:#F8FAFC; --bg-secondary:#EEF2F7; --bg-card:#FFFFFF;
+  --border:#D9E1EA; --text-primary:#111827; --text-secondary:#4B5563;
+  --text-muted:#6B7280; --green:#00C853; --purple:#7C3AED;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);line-height:1.7;overflow-x:hidden;}
+a{text-decoration:none;color:var(--purple);transition:color var(--transition);}
+a:hover{color:var(--green);}
+ul{list-style:none;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg-primary);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--purple);}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.35;}
+.bg-glow{position:fixed;inset:0;background:radial-gradient(circle at 15% 20%,rgba(57,255,136,0.05) 0%,transparent 40%),radial-gradient(circle at 85% 80%,rgba(168,85,247,0.05) 0%,transparent 40%);pointer-events:none;z-index:0;}
+
+/* NAV */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(17,19,21,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background var(--transition);}
+[data-theme="light"] .navbar{background:rgba(248,250,252,0.88);}
+.nav-logo{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em;}
+.nav-logo span{color:var(--green);}
+.nav-links{display:flex;gap:0.2rem;align-items:center;}
+.nav-links a{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);padding:0.4rem 0.7rem;border-radius:8px;transition:all var(--transition);letter-spacing:0.02em;}
+.nav-links a:hover,.nav-links a.active{color:var(--green);background:rgba(57,255,136,0.08);box-shadow:var(--glow-green);}
+.nav-actions{display:flex;gap:0.75rem;align-items:center;}
+.theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);padding:0.4rem 0.7rem;border-radius:8px;cursor:pointer;font-size:0.9rem;transition:all var(--transition);}
+.theme-btn:hover{border-color:var(--green);color:var(--green);}
+.nav-cta{background:var(--green) !important;color:#111315 !important;padding:0.45rem 1rem !important;border-radius:8px;font-family:var(--font-mono) !important;font-size:0.78rem !important;font-weight:500;transition:all var(--transition) !important;}
+.nav-cta:hover{background:var(--purple) !important;color:#fff !important;box-shadow:var(--glow-purple) !important;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text-secondary);border-radius:2px;transition:all var(--transition);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:1.5rem;z-index:999;flex-direction:column;gap:0.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:var(--font-mono);font-size:0.85rem;color:var(--text-secondary);padding:0.6rem 1rem;border-radius:8px;transition:all var(--transition);}
+.mobile-menu a:hover{color:var(--green);background:rgba(57,255,136,0.08);}
+
+/* LAYOUT */
+main{position:relative;z-index:1;}
+section{padding:7rem 2rem;max-width:1100px;margin:0 auto;}
+.section-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.15em;color:var(--green);text-transform:uppercase;margin-bottom:0.75rem;}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--text-primary);line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;}
+.section-subtitle{font-size:1rem;color:var(--text-secondary);max-width:600px;margin-bottom:3.5rem;line-height:1.8;}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent);margin:0 auto;max-width:1100px;opacity:0.3;}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:64px;position:relative;overflow:hidden;}
+.hero-banner{position:absolute;inset:0;background-image:url("Photos/banner.jpg");background-size:contain;background-position:top center;background-repeat:no-repeat;background-attachment:fixed;opacity:0.85;pointer-events:none;z-index:0;filter:brightness(0.9);}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,19,21,0.6) 0%,rgba(17,19,21,0.08) 40%,rgba(17,19,21,0.8) 100%);}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:0.12;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent);z-index:1;}
+.hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;padding:0 2rem;}
+.hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(57,255,136,0.08);border:1px solid rgba(57,255,136,0.2);border-radius:100px;padding:0.35rem 0.9rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;animation:fadeInUp 0.6s ease both;}
+.hero-name{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.04em;margin-bottom:1.25rem;animation:fadeInUp 0.6s 0.1s ease both;}
+.hero-name-block{display:flex;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.25rem;}
+.hero-name-block .hero-name{margin-bottom:0;}
+.name-photo{width:120px;height:120px;border-radius:28px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);box-shadow:0 20px 60px rgba(0,0,0,0.25);}
+.name-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-role{font-family:var(--font-mono);font-size:clamp(0.85rem,1.8vw,1rem);color:var(--text-secondary);margin-bottom:1.5rem;animation:fadeInUp 0.6s 0.2s ease both;}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);}}
+.hero-name{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.04em;margin-bottom:1.25rem;animation:fadeInUp 0.6s 0.1s ease both;}
+.hero-name .gradient-text{background:linear-gradient(135deg,var(--green) 0%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-role{font-family:var(--font-mono);font-size:clamp(0.85rem,1.8vw,1rem);color:var(--text-secondary);margin-bottom:1.5rem;animation:fadeInUp 0.6s 0.2s ease both;}
+.hero-role .highlight{color:var(--green);}
+.hero-desc{font-size:clamp(0.95rem,1.5vw,1.05rem);color:var(--text-secondary);max-width:580px;margin-bottom:2.5rem;line-height:1.85;animation:fadeInUp 0.6s 0.3s ease both;}
+.hero-desc strong{color:var(--text-primary);}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;animation:fadeInUp 0.6s 0.4s ease both;}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:#111315;padding:0.75rem 1.75rem;border-radius:10px;font-family:var(--font-mono);font-size:0.85rem;font-weight:500;letter-spacing:0.03em;transition:all var(--transition);cursor:pointer;border:none;}
+.btn-primary:hover{background:var(--purple);color:#fff;box-shadow:var(--glow-purple);transform:translateY(-2px);}
+.btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--text-primary);padding:0.75rem 1.75rem;border-radius:10px;font-family:var(--font-mono);font-size:0.85rem;font-weight:500;letter-spacing:0.03em;border:1px solid var(--border);transition:all var(--transition);cursor:pointer;}
+.btn-secondary:hover{border-color:var(--purple);color:var(--purple);box-shadow:var(--glow-purple);transform:translateY(-2px);}
+.hero-stats{display:flex;flex-wrap:wrap;gap:2.5rem;animation:fadeInUp 0.6s 0.5s ease both;}
+.stat{display:flex;flex-direction:column;}
+.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--text-primary);line-height:1;}
+.stat-num span{color:var(--green);}
+.stat-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;animation:fadeInUp 0.6s 0.8s ease both;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--green),transparent);animation:scrollAnim 2s infinite;}
+@keyframes scrollAnim{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+.scroll-text{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;writing-mode:vertical-rl;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ABOUT */
+#about{padding-top:8rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start;}
+.about-visual{position:sticky;top:100px;}
+.about-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden;}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple));}
+.about-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:#111315;margin-bottom:1.5rem;box-shadow:var(--glow-green);}
+.about-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.footer-name-block{display:inline-flex;align-items:center;gap:0.6rem;}
+.footer-name-photo{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,0.12);}
+.about-name{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:0.25rem;}
+@media (max-width:760px){
+  .hero-name-block{flex-direction:column;align-items:flex-start;}
+  .name-photo{width:96px;height:96px;}
+  .footer-name-photo{width:24px;height:24px;}
+}
+.about-title-tag{font-family:var(--font-mono);font-size:0.75rem;color:var(--green);margin-bottom:1.5rem;}
+.about-meta{display:flex;flex-direction:column;gap:0.75rem;}
+.meta-item{display:flex;align-items:center;gap:0.75rem;font-size:0.85rem;color:var(--text-secondary);}
+.meta-icon{width:28px;height:28px;border-radius:6px;background:rgba(57,255,136,0.08);border:1px solid rgba(57,255,136,0.15);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;}
+.about-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+.badge{font-family:var(--font-mono);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:6px;border:1px solid var(--border);color:var(--text-muted);background:var(--bg-secondary);transition:all var(--transition);}
+.badge:hover{border-color:var(--green);color:var(--green);background:rgba(57,255,136,0.06);}
+.badge.accent{border-color:rgba(168,85,247,0.3);color:var(--purple);background:rgba(168,85,247,0.06);}
+.about-text p{color:var(--text-secondary);margin-bottom:1.35rem;line-height:1.85;font-size:0.97rem;}
+.about-text p strong{color:var(--text-primary);}
+.about-pullquote{border-left:3px solid var(--green);padding:1rem 1.5rem;margin:2rem 0;font-style:italic;color:var(--text-secondary);font-size:0.95rem;line-height:1.8;background:rgba(57,255,136,0.03);border-radius:0 var(--radius) var(--radius) 0;}
+
+/* JOURNEY (was Experience) */
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--green),var(--purple),transparent);}
+.timeline-item{display:grid;grid-template-columns:56px 1fr;gap:1.5rem;margin-bottom:2rem;position:relative;}
+.timeline-dot{width:40px;height:40px;border-radius:50%;background:var(--bg-card);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;position:relative;z-index:1;transition:all var(--transition);}
+.timeline-item:hover .timeline-dot{box-shadow:var(--glow-green);background:rgba(57,255,136,0.1);}
+.timeline-dot.purple{border-color:var(--purple);}
+.timeline-item:hover .timeline-dot.purple{box-shadow:var(--glow-purple);}
+.exp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;transition:all var(--transition);position:relative;overflow:hidden;}
+.exp-card:hover{border-color:rgba(57,255,136,0.2);transform:translateX(4px);}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.4rem;}
+.exp-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--text-primary);}
+.exp-date{font-family:var(--font-mono);font-size:0.72rem;color:var(--green);background:rgba(57,255,136,0.08);border:1px solid rgba(57,255,136,0.15);padding:0.2rem 0.6rem;border-radius:100px;}
+.exp-org{font-family:var(--font-mono);font-size:0.78rem;color:var(--purple);margin-bottom:1rem;}
+.exp-story{font-size:0.88rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;}
+.exp-learned{background:rgba(168,85,247,0.04);border:1px solid rgba(168,85,247,0.1);border-radius:8px;padding:0.85rem 1rem;margin-bottom:1rem;}
+.exp-learned-label{font-family:var(--font-mono);font-size:0.62rem;color:var(--purple);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem;}
+.exp-learned-text{font-size:0.83rem;color:var(--text-secondary);line-height:1.7;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.exp-tag{font-family:var(--font-mono);font-size:0.63rem;color:var(--text-muted);background:var(--bg-secondary);border:1px solid var(--border);padding:0.2rem 0.55rem;border-radius:5px;}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+.edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;position:relative;overflow:hidden;transition:all var(--transition);}
+.edu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple));}
+.edu-card:hover{border-color:rgba(168,85,247,0.2);transform:translateY(-3px);}
+.edu-icon{width:48px;height:48px;border-radius:12px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.25rem;}
+.edu-degree{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.4rem;line-height:1.3;}
+.edu-inst{font-family:var(--font-mono);font-size:0.78rem;color:var(--purple);margin-bottom:0.25rem;}
+.edu-dates{font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);margin-bottom:1rem;}
+.edu-gpa{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(57,255,136,0.08);border:1px solid rgba(57,255,136,0.2);border-radius:100px;padding:0.3rem 0.8rem;font-family:var(--font-mono);font-size:0.72rem;color:var(--green);margin-bottom:1rem;}
+.edu-story{font-size:0.85rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem;}
+.edu-courses{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.edu-course{font-family:var(--font-mono);font-size:0.62rem;color:var(--text-muted);background:var(--bg-secondary);border:1px solid var(--border);padding:0.2rem 0.5rem;border-radius:4px;}
+
+/* PROJECTS */
+#projects{padding-top:6rem;}
+.projects-filter{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem;}
+.filter-btn{font-family:var(--font-mono);font-size:0.72rem;padding:0.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all var(--transition);}
+.filter-btn:hover,.filter-btn.active{border-color:var(--green);color:var(--green);background:rgba(57,255,136,0.08);}
+
+/* CAPSTONE - flagship */
+.capstone-card{background:var(--bg-card);border:1px solid rgba(57,255,136,0.25);border-radius:var(--radius-lg);padding:2.5rem;position:relative;overflow:hidden;margin-bottom:2rem;transition:all var(--transition);}
+.capstone-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(57,255,136,0.07) 0%,transparent 55%),radial-gradient(circle at bottom right,rgba(168,85,247,0.05) 0%,transparent 55%);pointer-events:none;}
+.capstone-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--purple));}
+.capstone-card:hover{border-color:rgba(57,255,136,0.4);box-shadow:0 24px 60px rgba(0,0,0,0.35),0 0 0 1px rgba(57,255,136,0.1);}
+.capstone-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+.capstone-badges{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.capstone-badge{font-family:var(--font-mono);font-size:0.68rem;padding:0.3rem 0.8rem;border-radius:100px;border:1px solid rgba(57,255,136,0.4);color:var(--green);background:rgba(57,255,136,0.08);text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
+.capstone-badge.fyp{border-color:rgba(168,85,247,0.4);color:var(--purple);background:rgba(168,85,247,0.08);}
+.capstone-title{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:0.75rem;line-height:1.2;}
+.capstone-subtitle{font-family:var(--font-mono);font-size:0.8rem;color:var(--purple);margin-bottom:1.25rem;}
+.capstone-desc{font-size:0.95rem;color:var(--text-secondary);line-height:1.85;margin-bottom:1.5rem;}
+.capstone-story{background:rgba(57,255,136,0.04);border:1px solid rgba(57,255,136,0.12);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1.5rem;}
+.capstone-story-label{font-family:var(--font-mono);font-size:0.62rem;color:var(--green);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;}
+.capstone-story-text{font-size:0.88rem;color:var(--text-secondary);line-height:1.8;font-style:italic;}
+.capstone-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.capstone-feature{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;transition:all var(--transition);}
+.capstone-feature:hover{border-color:rgba(57,255,136,0.2);}
+.capstone-feature-icon{font-size:1.4rem;margin-bottom:0.5rem;}
+.capstone-feature-title{font-family:var(--font-mono);font-size:0.75rem;color:var(--text-primary);font-weight:500;margin-bottom:0.3rem;}
+.capstone-feature-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+.capstone-stack{display:flex;flex-wrap:wrap;gap:0.4rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+.stack-tag{font-family:var(--font-mono);font-size:0.63rem;color:var(--text-muted);background:var(--bg-secondary);border:1px solid var(--border);padding:0.2rem 0.5rem;border-radius:4px;transition:all var(--transition);}
+.stack-tag:hover{border-color:var(--green);color:var(--green);}
+
+/* REGULAR PROJECT GRID */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;position:relative;overflow:hidden;transition:all var(--transition);display:flex;flex-direction:column;}
+.project-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(57,255,136,0.03),transparent 60%);opacity:0;transition:opacity var(--transition);}
+.project-card:hover{border-color:rgba(57,255,136,0.2);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.25);}
+.project-card:hover::before{opacity:1;}
+.project-card.placeholder{opacity:0.6;}
+.project-card.placeholder:hover{opacity:0.85;}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.85rem;}
+.project-icon{width:40px;height:40px;border-radius:10px;background:rgba(57,255,136,0.08);border:1px solid rgba(57,255,136,0.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.project-icon.purple-bg{background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.15);}
+.project-icon.amber-bg{background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.15);}
+.project-badge-sm{font-family:var(--font-mono);font-size:0.6rem;padding:0.2rem 0.55rem;border-radius:100px;border:1px solid;text-transform:uppercase;letter-spacing:0.05em;}
+.project-badge-sm.fullstack{color:var(--purple);border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.06);}
+.project-badge-sm.security{color:var(--warning);border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.06);}
+.project-badge-sm.ai{color:var(--green);border-color:rgba(57,255,136,0.3);background:rgba(57,255,136,0.06);}
+.project-badge-sm.data{color:#60a5fa;border-color:rgba(96,165,250,0.3);background:rgba(96,165,250,0.06);}
+.project-badge-sm.placeholder-tag{color:var(--text-muted);border-color:var(--border);background:transparent;}
+.project-name{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.4rem;line-height:1.3;}
+.project-desc{font-size:0.84rem;color:var(--text-secondary);line-height:1.7;flex:1;margin-bottom:1rem;}
+.project-stack{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:auto;padding-top:0.85rem;border-top:1px solid var(--border);}
+.placeholder-line{height:10px;background:var(--border);border-radius:4px;margin-bottom:0.5rem;animation:shimmer 2s infinite;}
+.placeholder-line.short{width:60%;}
+.placeholder-line.medium{width:80%;}
+@keyframes shimmer{0%,100%{opacity:0.4;}50%{opacity:0.7;}}
+
+/* SKILLS */
+.skills-container{display:flex;flex-direction:column;gap:2.5rem;}
+.skill-category-title{font-family:var(--font-mono);font-size:0.72rem;color:var(--green);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(57,255,136,0.15);}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:0.75rem;}
+.skill-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;display:flex;flex-direction:column;gap:0.75rem;transition:all var(--transition);}
+.skill-item:hover{border-color:rgba(57,255,136,0.2);transform:translateY(-2px);}
+.skill-top{display:flex;align-items:center;gap:0.6rem;}
+.skill-emoji{font-size:1.2rem;}
+.skill-name{font-family:var(--font-mono);font-size:0.76rem;color:var(--text-primary);font-weight:500;}
+.skill-bar-bg{height:3px;background:var(--border);border-radius:3px;overflow:hidden;}
+.skill-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(0.4,0,0.2,1);}
+.skill-bar-fill.animated{transform:scaleX(1);}
+.skill-level{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted);align-self:flex-end;}
+
+/* BEYOND THE WORK */
+#beyond{padding-top:5rem;}
+.beyond-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;}
+.beyond-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;transition:all var(--transition);}
+.beyond-card:hover{border-color:rgba(168,85,247,0.2);transform:translateY(-2px);}
+.beyond-icon{font-size:2rem;margin-bottom:1rem;}
+.beyond-title{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:0.5rem;}
+.beyond-text{font-size:0.85rem;color:var(--text-secondary);line-height:1.75;}
+
+/* CONTACT */
+#contact{padding-top:5rem;position:relative;overflow:hidden;background-image:url("Photos/banner.jpg");background-size:cover;background-position:center;}
+#contact::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,19,21,0.75) 0%,rgba(17,19,21,0.15) 30%,rgba(17,19,21,0.85) 100%);pointer-events:none;}
+.contact-wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;text-align:center;}
+.contact-intro{font-size:1rem;color:var(--text-secondary);line-height:1.85;margin-bottom:2.5rem;}
+.contact-form-card{background:rgba(17,19,21,0.85);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:2.5rem;text-align:left;position:relative;overflow:hidden;}
+.contact-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--purple));}
+.contact-form{display:flex;flex-direction:column;gap:1rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;}
+.form-input,.form-textarea{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:0.8rem 1rem;color:var(--text-primary);font-family:var(--font-body);font-size:0.9rem;transition:all var(--transition);outline:none;width:100%;}
+.form-input:focus,.form-textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(57,255,136,0.08);}
+.form-textarea{resize:vertical;min-height:130px;}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-muted);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:1100px;margin:0 auto;}
+.footer-copy{font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);}
+.footer-copy span{color:var(--green);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);transition:color var(--transition);}
+.footer-links a:hover{color:var(--green);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .about-visual{position:static;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .nav-actions .nav-cta{display:none;}
+  .hamburger{display:flex;}
+  section{padding:5rem 1.25rem;}
+  .hero-stats{gap:1.5rem;}
+}
+@media(max-width:480px){
+  .hero-actions{flex-direction:column;}
+  .btn-primary,.btn-secondary{justify-content:center;}
+  footer{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">MH<span>Z</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#beyond">Beyond</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    <a href="#contact" class="nav-cta">Say Hello</a>
+  </div>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#journey" onclick="closeMobile()">Journey</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#beyond" onclick="closeMobile()">Beyond</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<main>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-banner"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Based in Doha, Qatar · Open to Opportunities</div>
+    <div class="hero-name-block">
+      <h1 class="hero-name">
+        Muhammad<br>
+        <span class="gradient-text">Hassaan Zeb</span>
+      </h1>
+      <div class="name-photo">
+        <img src="Photos/headshot.jpg" alt="Headshot of Muhammad Hassaan Zeb">
+      </div>
+    </div>
+    <p class="hero-role">
+      <span class="highlight">IT Systems Engineer</span> &nbsp;·&nbsp; AI Developer &nbsp;·&nbsp; Technical Educator
+    </p>
+    <p class="hero-desc">
+      I build things that are meant to be used — not just to work. Five years of teaching people how technology works has made me a more careful engineer, a more thoughtful designer, and someone who genuinely cares about the <strong>human on the other side of the screen</strong>.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">See My Work ↓</a>
+      <a href="#about" class="btn-secondary">About Me →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">3<span>.55</span></span>
+        <span class="stat-label">CGPA</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5<span>+</span></span>
+        <span class="stat-label">Years Teaching</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Built Projects</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2<span>+</span></span>
+        <span class="stat-label">Years as TA</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual fade-in">
+      <div class="about-card">
+        <div class="about-avatar">
+          <img src="Photos/headshot.jpg" alt="Headshot of Muhammad Hassaan Zeb">
+        </div>
+        <div class="about-name">Muhammad Hassaan Zeb</div>
+        <div class="about-title-tag">IT Engineer · AI Developer · Educator</div>
+        <div class="about-meta">
+          <div class="meta-item">
+            <div class="meta-icon">📍</div>
+            Doha, Qatar
+          </div>
+          <div class="meta-item">
+            <div class="meta-icon">🎓</div>
+            UDST — B.Sc. Information Systems
+          </div>
+          <div class="meta-item">
+            <div class="meta-icon">💼</div>
+            Joining Chorate AI · QSTP
+          </div>
+        </div>
+        <div class="about-badges">
+          <span class="badge">Python</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">MongoDB</span>
+          <span class="badge accent">OpenAI API</span>
+          <span class="badge">Docker</span>
+          <span class="badge accent">AI Systems</span>
+          <span class="badge">Azure</span>
+          <span class="badge">EdTech</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text fade-in">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">I build things. I teach things. Usually both at once.</h2>
+
+      <p>Somewhere around my second year of university, I realised that the best engineers I admired weren't just technically sharp — they could <strong>explain what they built</strong> in a way that made it feel obvious. I wanted to be that kind of person.</p>
+
+      <p>That's probably why teaching has been such a constant part of my life. For five years, I've been tutoring students — quietly, without a platform or marketing, just word of mouth from people whose understanding actually improved. It's taught me more about how technology works, and how people think, than any course I've taken.</p>
+
+      <div class="about-pullquote">
+        "The moment a student's face changes — when something that confused them for weeks suddenly makes sense — that's the feeling I try to recreate when I'm designing a system. I want users to feel that same clarity."
+      </div>
+
+      <p>My technical work has grown out of genuine curiosity: <strong>what happens when AI actually helps someone</strong>, not just when it technically functions? My capstone project, an AI-powered gym assistant, started from a simple question: what would a coach that actually listens look like as software? The projects that followed — a learning platform, a workflow system — asked similar questions about real institutional friction I'd watched up close as a Teaching Assistant.</p>
+
+      <p>I have graduated this year and joined <strong>Chorate AI</strong> at Qatar Science and Technology Park. I'm not sure exactly where things will go from here, but I'm genuinely excited to find out. I'm building in a region that's investing seriously in its digital future, and I want to be part of that.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="section-label">How I Got Here</div>
+  <h2 class="section-title">The Journey</h2>
+  <p class="section-subtitle">Not just what I did — but what I learned along the way.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">🤖</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Technology Intern</div>
+          <span class="exp-date">2026 — Present</span>
+        </div>
+        <div class="exp-org">Chorate AI · Qatar Science and Technology Park (QSTP)</div>
+        <div class="exp-story">My first step into a professional AI environment. After years of building things for coursework and personal projects, this is where I get to see how real product teams make decisions — how they prioritise, what they throw away, and what they protect. There's a big difference between building something that works and building something that ships.</div>
+        <div class="exp-learned">
+          <div class="exp-learned-label">What I'm learning</div>
+          <div class="exp-learned-text">That the gap between an idea and a shipped product is filled with decisions — small ones, mostly — and that the quality of a team shows in how they make those decisions together.</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">AI Product Development</span>
+          <span class="exp-tag">Startup Environment</span>
+          <span class="exp-tag">QSTP Ecosystem</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot purple">🎓</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Teaching Assistant — CCIT Help Centre</div>
+          <span class="exp-date">Jan 2024 — April 2026</span>
+        </div>
+        <div class="exp-org">University of Doha for Science & Technology (UDST)</div>
+        <div class="exp-story">Faculty asked me to support students who were struggling with Information Systems coursework. What I didn't expect was how much I'd learn from it. Explaining a concept to someone who doesn't understand it forces you to understand it more deeply than you thought you did. I've explained Python loops, MongoDB queries, and API integration more times than I can count — and each time, I found a better way to say it.</div>
+        <div class="exp-learned">
+          <div class="exp-learned-label">What it taught me</div>
+          <div class="exp-learned-text">Patience is a technical skill. The best explanation isn't the most accurate one — it's the one that meets the learner where they actually are. I carry this into how I write code: is it readable? Will the person who reads this later understand why I made this decision?</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Python</span><span class="exp-tag">SQL</span>
+          <span class="exp-tag">MongoDB</span><span class="exp-tag">Adaptive Teaching</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">📚</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Independent Technical Tutor</div>
+          <span class="exp-date">Sep 2020 — Present</span>
+        </div>
+        <div class="exp-org">Self-Managed Practice · Doha, Qatar</div>
+        <div class="exp-story">This started when a friend asked if I could help them with maths before an exam. Then their sibling asked. Then a classmate. Five years later, I'm still at it — entirely through word of mouth, never advertised. I've taught students from all kinds of backgrounds across Doha: different subjects, different learning styles, different relationships with failure. Some students needed someone to believe in them before they believed in themselves.</div>
+        <div class="exp-learned">
+          <div class="exp-learned-label">What it taught me</div>
+          <div class="exp-learned-text">Building something through referrals alone teaches you that reputation is just consistency over time. Show up, do good work, care about the outcome. That principle applies everywhere — not just in a tutoring session.</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">5+ Years</span><span class="exp-tag">Referral-Only Growth</span>
+          <span class="exp-tag">Programming</span><span class="exp-tag">Mathematics</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot purple">🤝</div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-title">Peer Tutor — Information Systems</div>
+          <span class="exp-date">Jan 2023 — Dec 2023</span>
+        </div>
+        <div class="exp-org">University of Doha for Science & Technology (UDST)</div>
+        <div class="exp-story">Faculty selected me based on academic performance to support peers in IS courses. Honestly, being in the same position as your students just a year earlier makes you a better tutor. I remembered exactly where the confusion lived — because I'd been confused there too.</div>
+        <div class="exp-learned">
+          <div class="exp-learned-label">What it taught me</div>
+          <div class="exp-learned-text">Vulnerability in learning is not weakness. The students who asked the most questions learned the most. I try to remember that when I'm the one in the room who doesn't know something yet.</div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag">Information Systems</span><span class="exp-tag">Peer Support</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <p class="section-subtitle">Four years that taught me far more than I expected — technically and otherwise.</p>
+
+  <div class="edu-grid">
+    <div class="edu-card fade-in">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-degree">Bachelor of Applied Science in IT — Information Systems</div>
+      <div class="edu-inst">University of Doha for Science & Technology (UDST)</div>
+      <div class="edu-dates">2022 — 2025 · Doha, Qatar</div>
+      <div class="edu-gpa">CGPA: 3.55 / 4.0</div>
+      <div class="edu-story">University taught me discipline more than anything else. The technical skills came — Python, databases, systems design, testing — but the real education was learning to stay focused through difficult semesters, collaborate with people who thought differently from me, and keep building even when the project wasn't working. The number on my transcript matters less to me than the habit of finishing hard things.</div>
+      <div class="edu-courses">
+        <span class="edu-course">AI & Data Processing</span>
+        <span class="edu-course">System Integration</span>
+        <span class="edu-course">Cybersecurity Fundamentals</span>
+        <span class="edu-course">Database Systems</span>
+        <span class="edu-course">Software Testing</span>
+        <span class="edu-course">System Deployment</span>
+        <span class="edu-course">SDLC</span>
+        <span class="edu-course">Network Fundamentals</span>
+        <span class="edu-course">IS Management</span>
+      </div>
+    </div>
+
+    <div class="edu-card fade-in">
+      <div class="edu-icon">✨</div>
+      <div class="edu-degree">Highlights & Recognitions</div>
+      <div class="edu-inst">University of Doha for Science & Technology</div>
+      <div class="edu-dates">2022 — 2025</div>
+      <div class="edu-story">A few moments from these four years that I'm genuinely proud of — not because of the titles, but because of what they meant at the time.</div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;margin-top:0.5rem;">
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Faculty-appointed as Teaching Assistant — they trusted me enough to put me in front of students who were struggling. That meant something.</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Selected as Peer Tutor based on academic merit — my peers knew they could ask me something and I'd take it seriously.</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Presented capstone project at UDST Showcase — standing in front of a professional panel to explain something I built was one of the more nerve-wracking, satisfying things I've done.</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Recipient of the Athlete Scholarship Award — recognized for athletic performance and academic balance.</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Nominee — Student Athlete of the Year 2024.</span>
+        </div>
+        <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.84rem;color:var(--text-secondary);">
+          <span style="color:var(--green);font-family:var(--font-mono);flex-shrink:0;margin-top:2px;">→</span>
+          <span>Active volunteer at 5 UDST community events — I wanted to be part of building the institution, not just receiving from it.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-title">Projects</h2>
+  <p class="section-subtitle">Things I've built — some polished, some in progress. All of them started with a question I genuinely wanted to answer.</p>
+
+  <!-- CAPSTONE FLAGSHIP -->
+  <div class="capstone-card fade-in">
+    <div class="capstone-top">
+      <div class="capstone-badges">
+        <span class="capstone-badge">⭐ Capstone Project</span>
+        <span class="capstone-badge fyp">Final Year Project</span>
+      </div>
+      <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);">Jan 2025 — May 2025</span>
+    </div>
+    <div class="capstone-title">Smart AI-Based Gym Assistant Application</div>
+    <div class="capstone-subtitle">AI-Powered Fitness Technology · Recommendation Systems · User-Centered Design</div>
+    <div class="capstone-desc">
+      This project started with a simple question: what would a personal trainer look like as software — one that actually adapts to you, remembers your progress, and gives you feedback that makes sense for where you are, not where someone else is? The answer turned into my most complete piece of engineering work to date.
+    </div>
+    <div class="capstone-story">
+      <div class="capstone-story-label">Why it matters to me</div>
+      <div class="capstone-story-text">I've spent years explaining things to people at different levels. The hardest part is always calibrating — knowing how much detail to give, when to simplify, when to push further. That's exactly the problem this system tries to solve for fitness. It's not about the reps; it's about whether the person keeps going. I designed the AI guidance layer with that in mind: not optimal in theory, but helpful in practice.</div>
+    </div>
+    <div class="capstone-grid">
+      <div class="capstone-feature">
+        <div class="capstone-feature-icon">🧠</div>
+        <div class="capstone-feature-title">AI Recommendation Engine</div>
+        <div class="capstone-feature-desc">Adaptive workout plans generated from user fitness profiles, goals, and performance history.</div>
+      </div>
+      <div class="capstone-feature">
+        <div class="capstone-feature-icon">📊</div>
+        <div class="capstone-feature-title">Progress Analytics</div>
+        <div class="capstone-feature-desc">Longitudinal performance tracking with visualisation — so users can see their own trajectory.</div>
+      </div>
+      <div class="capstone-feature">
+        <div class="capstone-feature-icon">🎯</div>
+        <div class="capstone-feature-title">Real-Time Guidance</div>
+        <div class="capstone-feature-desc">Exercise-level instruction that adjusts based on user input, not just a pre-written script.</div>
+      </div>
+      <div class="capstone-feature">
+        <div class="capstone-feature-icon">👤</div>
+        <div class="capstone-feature-title">Human-Centered UI</div>
+        <div class="capstone-feature-desc">Designed for people who don't think about software — clear, intuitive, no learning curve.</div>
+      </div>
+    </div>
+    <div class="capstone-stack">
+      <span class="stack-tag">AI / ML</span>
+      <span class="stack-tag">Recommendation Systems</span>
+      <span class="stack-tag">Software Engineering</span>
+      <span class="stack-tag">SDLC</span>
+      <span class="stack-tag">UI/UX Design</span>
+      <span class="stack-tag">Data Analytics</span>
+      <span class="stack-tag">Team Collaboration</span>
+      <span class="stack-tag">Technical Presentation</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <div class="projects-grid">
+
+    <!-- Project 1: AI Assessment Platform -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="project-icon">🤖</div>
+        <span class="project-badge-sm ai">AI · EdTech</span>
+      </div>
+      <div class="project-name">AI Student Self-Assessment Platform</div>
+      <div class="project-desc">A learning platform where AI generates quiz questions — but educators review every single one before students see it. I built the human-oversight step deliberately, because I'd watched enough AI-generated content to know it needs a human in the loop.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Node.js</span><span class="stack-tag">MongoDB</span>
+        <span class="stack-tag">OpenAI API</span><span class="stack-tag">GitHub Actions</span>
+        <span class="stack-tag">Azure</span><span class="stack-tag">CI/CD</span>
+      </div>
+    </div>
+
+    <!-- Project 2: Request Management System -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="project-icon purple-bg">🏛️</div>
+        <span class="project-badge-sm security">Secure · Backend</span>
+      </div>
+      <div class="project-name">Institutional Request Management System</div>
+      <div class="project-desc">Built after watching the departmental request process at university — emails getting lost, no visibility, no triage. A priority queue, role-based access, and CSRF protection. Security wasn't an afterthought; it was the starting point.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Node.js</span><span class="stack-tag">Express.js</span>
+        <span class="stack-tag">MongoDB</span><span class="stack-tag">RBAC</span>
+        <span class="stack-tag">CSRF</span><span class="stack-tag">Queue Algorithm</span>
+      </div>
+    </div>
+
+    <!-- Project 3: API Data Pipeline -->
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="project-icon amber-bg">🔗</div>
+        <span class="project-badge-sm data">Data · Backend</span>
+      </div>
+      <div class="project-name">API Integration & Data Pipeline</div>
+      <div class="project-desc">A Python backend that pulls live data from external APIs and stores it locally in a structured, queryable format. Built to understand how data flows through a real system — from external source to usable output.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">Database Design</span><span class="stack-tag">Data Processing</span>
+      </div>
+    </div>
+
+    <!-- Placeholders 01-10 -->
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 01</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 02</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 03</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 04</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 05</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+    <div class="project-card placeholder fade-in">
+      <div class="project-header">
+        <div class="project-icon">🔧</div>
+        <span class="project-badge-sm placeholder-tag">Coming Soon</span>
+      </div>
+      <div class="project-name">Project 06</div>
+      <div class="project-desc" style="color:var(--text-muted);">Description coming soon. This project is currently being documented.</div>
+      <div class="project-stack">
+        <div class="placeholder-line medium"></div>
+        <div class="placeholder-line short"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Stack</div>
+  <h2 class="section-title">Skills</h2>
+  <p class="section-subtitle">Things I've used to build real things — and things I'm still getting better at.</p>
+
+  <div class="skills-container">
+    <div class="fade-in">
+      <div class="skill-category-title">// AI & Intelligent Systems</div>
+      <div class="skill-grid">
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🤖</span><span class="skill-name">OpenAI API</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.85"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🧠</span><span class="skill-name">ML Evaluation</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.68"></div></div><span class="skill-level">Proficient</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🔄</span><span class="skill-name">Human-in-Loop AI</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.88"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">📊</span><span class="skill-name">Data Pipelines</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.72"></div></div><span class="skill-level">Proficient</span></div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="skill-category-title">// Programming & Data</div>
+      <div class="skill-grid">
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🐍</span><span class="skill-name">Python</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.88"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">📈</span><span class="skill-name">Pandas / NumPy</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.76"></div></div><span class="skill-level">Proficient</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">⚡</span><span class="skill-name">JavaScript</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.80"></div></div><span class="skill-level">Proficient</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🗄️</span><span class="skill-name">SQL</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.82"></div></div><span class="skill-level">Advanced</span></div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="skill-category-title">// Backend & Systems</div>
+      <div class="skill-grid">
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🟢</span><span class="skill-name">Node.js</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.85"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🍃</span><span class="skill-name">MongoDB</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.83"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🔗</span><span class="skill-name">REST APIs</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.87"></div></div><span class="skill-level">Advanced</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🔐</span><span class="skill-name">RBAC / Auth</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.80"></div></div><span class="skill-level">Proficient</span></div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="skill-category-title">// DevOps & Cloud</div>
+      <div class="skill-grid">
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🐙</span><span class="skill-name">GitHub Actions</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.78"></div></div><span class="skill-level">Proficient</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🐳</span><span class="skill-name">Docker</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.72"></div></div><span class="skill-level">Proficient</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">☁️</span><span class="skill-name">Azure</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.68"></div></div><span class="skill-level">Intermediate</span></div>
+        <div class="skill-item"><div class="skill-top"><span class="skill-emoji">🌿</span><span class="skill-name">Git / Gitflow</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="--w:0.85"></div></div><span class="skill-level">Advanced</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- BEYOND THE WORK -->
+<section id="beyond">
+  <div class="section-label">The Whole Person</div>
+  <h2 class="section-title">Beyond the Work</h2>
+  <p class="section-subtitle">The things that aren't on a CV but probably shape how I work more than anything on it.</p>
+
+  <div class="beyond-grid">
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">🏏</div>
+      <div class="beyond-title">Cricket</div>
+      <div class="beyond-text">Cricket taught me patience before I knew I needed it. The game doesn't reward rushing. You read the situation, you make a call, and sometimes you wait for three hours for the right moment to act. I think about that when I'm debugging something that isn't making sense — sometimes the answer only comes if you slow down and look properly.</div>
+    </div>
+
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">📖</div>
+      <div class="beyond-title">Continuous Learning</div>
+      <div class="beyond-text">I don't think I've ever finished a week without reading something I didn't have to read. Documentation, articles, course material — not because I'm disciplined about it, but because I genuinely get curious. The moment I stop finding something interesting is usually the moment I need to look at it from a different angle.</div>
+    </div>
+
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">🤝</div>
+      <div class="beyond-title">Relationships & Teamwork</div>
+      <div class="beyond-text">The best work I've done has always involved other people — not just working alongside them, but actually thinking together. I've learned that disagreement, when it comes from people who respect each other, produces better outcomes than consensus from people who are being polite. I'd rather have someone push back on my idea than agree with it out of convenience.</div>
+    </div>
+
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">🧭</div>
+      <div class="beyond-title">Leadership by Showing Up</div>
+      <div class="beyond-text">I've never been interested in leadership as a title. But I've learned that leadership is mostly about consistency — being someone people can rely on, following through on small things, and not waiting to be asked before you help. The students who kept coming back to my tutoring sessions weren't coming back for my expertise. They were coming back because I was there, every time.</div>
+    </div>
+
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">🌍</div>
+      <div class="beyond-title">Cultural Curiosity</div>
+      <div class="beyond-text">Growing up in Doha and studying at a university with students from dozens of countries has made me genuinely curious about how differently people think. I've tutored students from backgrounds very different from mine, and every time I've had to find a new way to explain something, I've understood the thing better myself. Perspective is a technical advantage.</div>
+    </div>
+
+    <div class="beyond-card fade-in">
+      <div class="beyond-icon">🏗️</div>
+      <div class="beyond-title">The Long Game</div>
+      <div class="beyond-text">I'm not in a rush. I want to build things that matter — not things that impress people at a glance and fall apart later. That takes time, and I'm okay with that. The tutoring practice I've run for five years wasn't built overnight. Neither will the career I'm working toward. I'd rather build something real slowly than something impressive quickly.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-label" style="text-align:center;">Get In Touch</div>
+    <h2 class="section-title" style="text-align:center;">Let's Talk</h2>
+    <p class="contact-intro">
+      Whether you're a recruiter with a role that might fit, a founder building something in the Gulf, a student who wants help with a concept, or just someone who wants to connect — I'm happy to hear from you. I try to respond to every message.
+    </p>
+
+    <div class="contact-form-card fade-in">
+      <form class="contact-form" method="POST" action="/submit-contact">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" name="name" class="form-input" placeholder="e.g. Sarah Ahmed" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Email</label>
+            <input type="email" name="email" class="form-input" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" name="subject" class="form-input" placeholder="What's this about?">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea name="message" class="form-textarea" placeholder="Say whatever you'd like. I'm a real person and I read everything." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;font-size:0.9rem;">
+          Send Message →
+        </button>
+      </form>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:2rem;margin-top:2rem;flex-wrap:wrap;">
+      <a href="https://www.linkedin.com/in/muhammad-hassaan-zeb-636547261/" target="_blank" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem;transition:color var(--transition);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
+        💼 LinkedIn
+      </a>
+      <a href="https://github.com/Muhammad-Hassaan-Zeb" target="_blank" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);display:flex;align-items:center;gap:0.5rem;transition:color var(--transition);" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--text-muted)'">
+        🐙 GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="section-divider"></div>
+
+<footer>
+  <div class="footer-copy">
+    © 2025 <span class="footer-name-block"><img src="Photos/headshot.jpg" alt="Headshot of Muhammad Hassaan Zeb" class="footer-name-photo"><span>Muhammad Hassaan Zeb</span></span> · Doha, Qatar
+  </div>
+  <div class="footer-links">
+    <a href="#hero">Top ↑</a>
+    <a href="https://www.linkedin.com/in/muhammad-hassaan-zeb-636547261/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Muhammad-Hassaan-Zeb" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script>
+/* THEME */
+function toggleTheme(){const h=document.documentElement;const c=h.getAttribute('data-theme');h.setAttribute('data-theme',c==='dark'?'light':'dark');localStorage.setItem('theme',h.getAttribute('data-theme'));}
+(function(){const s=localStorage.getItem('theme');if(s)document.documentElement.setAttribute('data-theme',s);})();
+
+/* MOBILE */
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');}
+
+/* ACTIVE NAV */
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a,.mobile-menu a');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id;});
+  navLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});
+  const navbar=document.getElementById('navbar');
+  navbar.style.boxShadow=window.scrollY>20?'0 4px 24px rgba(0,0,0,0.4)':'none';
+});
+
+/* SCROLL ANIMATIONS */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>{
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.skill-bar-fill').forEach(bar=>{
+          bar.classList.add('animated');
+          const w=parseFloat(bar.style.getPropertyValue('--w')||0.8);
+          bar.style.transform=`scaleX(${w})`;
+        });
+      },i*80);
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+/* FORM */
+function handleFormSubmit(btn){
+  const original=btn.innerHTML;
+  btn.innerHTML='Message Sent ✓';
+  btn.style.background='var(--success)';
+  btn.style.color='#fff';
+  setTimeout(()=>{btn.innerHTML=original;btn.style.background='';btn.style.color='';},3000);
+}
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>

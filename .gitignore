@@ -1,0 +1,23 @@
+# Ignore the generated Excel message store
+messages.xlsx
+
+# Python cache and environment files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+.env
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.log
+*.tmp
+*.swp
